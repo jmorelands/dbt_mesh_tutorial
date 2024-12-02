@@ -1,5 +1,6 @@
 models:
   - name: fct_orders
+    latest_version: 2
     config:
       contract:
         enforced: true 
@@ -29,4 +30,17 @@ models:
       - name: ordered_day
         data_type: number
       - name: ordered_year
-        data_type: number     
+        data_type: number   
+    versions:
+      - v: 1
+        deprecation_date: 2024-12-10
+      - v: 2
+        config:
+          alias: fct_orders
+        columns:
+          - name: order_amount
+            data_type: number
+          - name: location_opened_at
+            data_type: date
+          - include: all
+            exclude: [order_total]
